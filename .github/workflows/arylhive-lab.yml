@@ -42,7 +42,7 @@ jobs:
 
       - name: Package Artifact
         run: |
-          cd .next
+          cd dist
           zip -q -r ../build.zip .
 
       - name: Upload to ArylCloud B2
@@ -57,7 +57,7 @@ jobs:
           curl -X POST "${{ inputs.callback_url }}" \
                -H "Content-Type: application/json" \
                -H "Authorization: Bearer ${{ secrets.BUILD_SERVER_SECRET }}" \
-               -d '{"buildId": "'\''"${{ inputs.build_id }}"'\''", "previewId": "lproj_0693w5aytfy2", "status": "success", "r2Path": "labs/lproj_0693w5aytfy2/builds/'\''"${{ inputs.build_id }}"'\''".zip"}'
+               -d '{"buildId": "'\''"${{ inputs.build_id }}"'\''", "previewId": "lproj_a02hdcpcdo3d", "status": "success", "r2Path": "labs/lproj_a02hdcpcdo3d/builds/'\''"${{ inputs.build_id }}"'\''".zip"}'
 
       - name: Notify ArylHive (Failure)
         if: failure()
@@ -65,4 +65,4 @@ jobs:
           curl -X POST "${{ inputs.callback_url }}" \
                -H "Content-Type: application/json" \
                -H "Authorization: Bearer ${{ secrets.BUILD_SERVER_SECRET }}" \
-               -d '{"buildId": "'\''"${{ inputs.build_id }}"'\''", "previewId": "lproj_0693w5aytfy2", "status": "failed", "error": "GitHub Actions Build Failed"}'
+               -d '{"buildId": "'\''"${{ inputs.build_id }}"'\''", "previewId": "lproj_a02hdcpcdo3d", "status": "failed", "error": "GitHub Actions Build Failed"}'
